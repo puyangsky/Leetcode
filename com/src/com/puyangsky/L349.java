@@ -1,6 +1,5 @@
 package com.puyangsky;
 
-import com.test.thread.sycronized.IntGenerator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
