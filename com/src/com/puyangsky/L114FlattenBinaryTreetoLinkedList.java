@@ -1,12 +1,9 @@
 package com.puyangsky;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Author: puyangsky
  * Date:   17/5/16
- * Method:
+ * Method: 递归
  */
 public class L114FlattenBinaryTreetoLinkedList {
 
