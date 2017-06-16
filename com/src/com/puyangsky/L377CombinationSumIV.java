@@ -1,10 +1,5 @@
 package com.puyangsky;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * Author: puyangsky
  * Date:   17/6/15
@@ -21,6 +16,7 @@ public class L377CombinationSumIV {
         }
 
         if (left < 0)
+
             return;
 
         for (int i : nums) {
