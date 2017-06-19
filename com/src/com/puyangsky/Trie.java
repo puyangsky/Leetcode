@@ -7,7 +7,6 @@ package com.puyangsky;
  * Method: Trie树
  */
 public class Trie {
-    private String s;
     private Node root;
     class Node{
         int count;
@@ -69,7 +68,6 @@ public class Trie {
     /** Returns if there is any word in the trie that starts with the given prefix. */
     public boolean startsWith(String prefix) {
         if (null == prefix || "".equals(prefix)) return true;
-        if (search(prefix)) return true;
         Node cur = this.root;
         char[] chars = prefix.toCharArray();
         for (char c : chars) {
@@ -78,17 +76,14 @@ public class Trie {
             if (node == null) return false;
             cur = node;
         }
-        for ( Node node : cur.child) {
-            if (node != null)
-                return true;
-        }
-        return false;
+
+        return cur.count > 0;
     }
 
     public static void main(String[] args) {
         Trie trie = new Trie();
 
-        trie.insert("a");
+        trie.insert("ab");
 //        trie.insert("adc");
 //        trie.insert("aer");
 
