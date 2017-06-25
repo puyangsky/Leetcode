@@ -1,49 +1,42 @@
 package com.puyangsky;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Author: puyangsky
  * Date:   17/5/15
  * Method: 递归，回溯，全排列
- * TODO: TLE
  */
 public class L47PermutationsII {
-        static Set<List<Integer>> ans = new HashSet<>();
+    static List<List<Integer>> ans = new ArrayList<>();
 
-    public static void swap(int[] nums, int a, int b) {
-        int t = nums[a];
-        nums[a] = nums[b];
-        nums[b] = t;
-    }
-
-    public static void dfs(int[] nums, int index) {
-        if (index == nums.length) {
-            List<Integer> list = new ArrayList<>();
-            for (int i : nums) {
-                list.add(i);
-            }
+    public static void dfs(int[] nums, List<Integer> cur, boolean[] used) {
+        if (cur.size() == nums.length) {
+            List<Integer> list = new ArrayList<>(cur);
             ans.add(list);
         }else {
-            for (int i=index;i<nums.length;i++) {
-                swap(nums, index, i);
-                dfs(nums, index+1);
-                swap(nums, i, index);
+            for (int i=0;i<nums.length;i++) {
+                if (used[i]) continue;
+                if (i>0 && nums[i-1] == nums[i] && !used[i-1]) continue;
+                cur.add(nums[i]);
+                used[i] = true;
+                dfs(nums, cur, used);
+                cur.remove(cur.size() - 1);
+                used[i] = false;
             }
         }
     }
 
     public static List<List<Integer>> permuteUnique(int[] nums) {
         if (nums == null || nums.length == 0) return new ArrayList<>(ans);
-        dfs(nums, 0);
-        return new ArrayList<>(ans);
+        boolean[] used = new boolean[nums.length];
+        Arrays.sort(nums);
+        dfs(nums, new ArrayList<Integer>(), used);
+        return ans;
     }
 
     public static void main(String[] args) {
-        int []nums = new int[]{1,1,2};
+        int []nums = new int[]{1,1,3};
         List<List<Integer>> ans = permuteUnique(nums);
         for (int i = 0; i < ans.size(); i++) {
             for (int j = 0; j < ans.get(i).size(); j++) {

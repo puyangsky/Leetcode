@@ -3,8 +3,8 @@ package com.puyangsky;
 /**
  * Author:      puyangsky
  * Date:        17/6/24 下午1:16
- * Method:
- * Difficulty:
+ * Method:      从前向后更新每一步能走的最远的路程
+ * Difficulty:  Medium
  */
 public class L55JumpGame {
     public static boolean canJump(int[] nums) {
